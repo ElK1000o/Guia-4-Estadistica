@@ -1,7 +1,0 @@
-#Guia 4 Estadistica ------------------------------------------------------------
-
-#Camilo Riquelme - Jaime Salinas - Isidora Toledo
-
-#Carga de Paquetes
-
-pacman::p_load(haven, tidyverse, sjmisc, sjPlot, ggrepel, kableExtra, modeest)
