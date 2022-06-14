@@ -9,7 +9,7 @@ output: html_document
 # Título: 
 
 # Integrantes: 
-# - Camilo Riquelmen Horta. 
+# - Camilo Riquelme Horta. 
 # - Jaime Salinas vera.
 # - Isidora Toledo Cárdenas. 
 
