@@ -26,7 +26,7 @@ datos_proc = datos%>%
     iden_pol_2 >= 9 & iden_pol_2 <= 10 ~"Derecha"))%>%
   mutate(percepcion_4 = case_when(
     percepcion_4 == 1 ~"progresando", 
-    percepcion_4 <= 2 & percepcion_4 <=3 ~"estancado/en decadencia"))%>%
+    percepcion_4 >= 2 & percepcion_4 <=3 ~"estancado/en decadencia"))%>%
   mutate(edad = as.numeric(.$edad))%>%
   select(iden_pol = iden_pol_2, percepcion = percepcion_4, 
          sexo, edad, nivel = esc_nivel_1)%>%
@@ -100,7 +100,7 @@ plot_xtab(datos_proc$sexo, datos_proc$nivel, margin = "row",
           show.summary = TRUE, coord.flip = TRUE)
 
 plot_grpfrq(datos_proc$sexo, datos_proc$nivel,
-            type = "bar", title = "SEXO/NIVEL1")
+            type = "bar", title = "SEXO/NIVEL1", show)
 
 plot_grpfrq(datos_proc$nivel, datos_proc$sexo,
             type = "bar", title = "NIVEL/SEXO")

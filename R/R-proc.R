@@ -12,26 +12,33 @@ data = read_dta("input/data/base_85.dta")
 
 #Exploracion de variables ------------------------------------------------------
 
+frq(data$iden_pol_2)
+frq(data$confianza_6_j)
+frq(data$percepcion_4)
+frq(data$sexo)
+frq(data$esc_nivel_1)
+frq(data$edad)
+
+#Procesamiento de datos --------------------------------------------------------
+
 data_proc = data%>% 
-  mutate(iden_pol_2 = case_when(
+  mutate(iden_pol = case_when(
     iden_pol_2 >= 1 & iden_pol_2 <= 2 ~"Izquierda",
     iden_pol_2 >= 3 & iden_pol_2 <= 4 ~"Centro Izquierda",
     iden_pol_2 >= 5 & iden_pol_2 <= 6 ~"Centro",
     iden_pol_2 >= 7 & iden_pol_2 <= 8 ~"Centro Derecha",
     iden_pol_2 >= 9 & iden_pol_2 <= 10 ~"Derecha"),
-    percepcion_4 = case_when(percepcion_4 == 1 ~"progresando", 
-    percepcion_4 <= 2 & percepcion_4 <=3 ~"estancado/en decadencia"),
+    confianza = case_when(confianza_6_j==1~"Mucha Confianza", 
+                          confianza_6_j==2~"Bastante Confianza",
+                          confianza_6_j==3~"Poca Confianza",
+                          confianza_6_j==4~"Nada de Confianza",
+                          TRUE~NA_character_),
     edad = as.numeric(.$edad))%>%
-  select(sexo, edad, region, nivel = esc_nivel_1, iden_pol = iden_pol_2, 
-         percepcion = percepcion_4)%>%
+  select(sexo, edad, region, iden_pol, confianza_6_j)%>%
   mutate_if(is.labelled, ~(forcats::as_factor(.)))
 
 datos_proc$iden_pol = factor(datos_proc$iden_pol, levels = c(
   "Izquierda", "Centro Izquierda", "Centro", "Centro Derecha", "Derecha"))
-
-#Procesamiento de datos --------------------------------------------------------
-
-
 
 #Revision de procesamiento -----------------------------------------------------
 
