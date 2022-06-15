@@ -22,19 +22,19 @@ frq(data$edad)
 #Procesamiento de datos --------------------------------------------------------
 
 data_proc = data%>% 
-  mutate(iden_pol = case_when(
-    iden_pol_2 >= 1 & iden_pol_2 <= 2 ~"Izquierda",
-    iden_pol_2 >= 3 & iden_pol_2 <= 4 ~"Centro Izquierda",
-    iden_pol_2 >= 5 & iden_pol_2 <= 6 ~"Centro",
-    iden_pol_2 >= 7 & iden_pol_2 <= 8 ~"Centro Derecha",
-    iden_pol_2 >= 9 & iden_pol_2 <= 10 ~"Derecha"),
+  mutate(iden_pol = case_when(iden_pol_2 >= 1 & iden_pol_2 <= 2 ~"Izquierda",
+                              iden_pol_2 >= 3 & iden_pol_2 <= 4 ~"Centro Izquierda",
+                              iden_pol_2 >= 5 & iden_pol_2 <= 6 ~"Centro",
+                              iden_pol_2 >= 7 & iden_pol_2 <= 8 ~"Centro Derecha",
+                              iden_pol_2 >= 9 & iden_pol_2 <= 10 ~"Derecha",
+                              TRUE~NA_character_),
     confianza = case_when(confianza_6_j==1~"Mucha Confianza", 
                           confianza_6_j==2~"Bastante Confianza",
                           confianza_6_j==3~"Poca Confianza",
                           confianza_6_j==4~"Nada de Confianza",
                           TRUE~NA_character_),
     edad = as.numeric(.$edad))%>%
-  select(sexo, edad, region, iden_pol, confianza_6_j)%>%
+  select(sexo, edad, iden_pol, confianza)%>%
   mutate_if(is.labelled, ~(forcats::as_factor(.)))
 
 datos_proc$iden_pol = factor(datos_proc$iden_pol, levels = c(
