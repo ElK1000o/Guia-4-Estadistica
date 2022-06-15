@@ -28,21 +28,26 @@ data_proc = data%>%
                               iden_pol_2 >= 7 & iden_pol_2 <= 8 ~"Centro Derecha",
                               iden_pol_2 >= 9 & iden_pol_2 <= 10 ~"Derecha",
                               TRUE~NA_character_),
-    confianza = case_when(confianza_6_j==1~"Mucha Confianza", 
-                          confianza_6_j==2~"Bastante Confianza",
-                          confianza_6_j==3~"Poca Confianza",
-                          confianza_6_j==4~"Nada de Confianza",
-                          TRUE~NA_character_),
-    edad = as.numeric(.$edad))%>%
-  select(sexo, edad, iden_pol, confianza)%>%
-  mutate_if(is.labelled, ~(forcats::as_factor(.)))
+         confianza = case_when(confianza_6_j==1 ~"Mucha Confianza", 
+                               confianza_6_j==2 ~"Bastante Confianza",
+                               confianza_6_j==3 ~"Poca Confianza",
+                               confianza_6_j==4 ~"Nada de Confianza",
+                               TRUE~NA_character_),
+         edad = case_when(edad<=29 ~"Jovenes",
+                          edad>=30 & edad<=59 ~"Adultos/as",
+                          edad>=60 ~"Adulto/a Mayor"),
+         sexo = case_when(sexo==1 ~"Hombre", sexo==2 ~"Mujer"))%>%
+  select(sexo, edad, iden_pol, confianza)
 
-datos_proc$iden_pol = factor(datos_proc$iden_pol, levels = c(
+data_proc$iden_pol = factor(data_proc$iden_pol, levels = c(
   "Izquierda", "Centro Izquierda", "Centro", "Centro Derecha", "Derecha"))
 
 #Revision de procesamiento -----------------------------------------------------
 
-
+frq(data_proc$sexo)
+frq(data_proc$edad)
+frq(data_proc$confianza)
+frq(data_proc$iden_pol)
 
 #Guardar datos procesados ------------------------------------------------------
 
