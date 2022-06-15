@@ -33,14 +33,19 @@ data_proc = data%>%
                                confianza_6_j==3 ~"Poca Confianza",
                                confianza_6_j==4 ~"Nada de Confianza",
                                TRUE~NA_character_),
+         conf_dummy = case_when(confianza_6_j >=1 & confianza_6_j<=2 ~"Confianza",
+                                confianza_6_j >=3 & confianza_6_j<=4 ~"Desconfianza"),
          edad = case_when(edad<=29 ~"Jovenes",
                           edad>=30 & edad<=59 ~"Adultos/as",
-                          edad>=60 ~"Adulto/a Mayor"),
+                          edad>=60 ~"Adulto/a Mayor",
+                          TRUE~NA_character_),
          sexo = case_when(sexo==1 ~"Hombre", sexo==2 ~"Mujer"))%>%
-  select(sexo, edad, iden_pol, confianza)
+  select(sexo, edad, iden_pol, confianza, conf_dummy)
 
 data_proc$iden_pol = factor(data_proc$iden_pol, levels = c(
   "Izquierda", "Centro Izquierda", "Centro", "Centro Derecha", "Derecha"))
+data_proc$confianza = factor(data_proc$confianza, levels = c(
+  "Mucha Confianza", "Bastante Confianza", "Poca Confianza", "Nada de Confianza"))
 
 #Revision de procesamiento -----------------------------------------------------
 
@@ -48,6 +53,23 @@ frq(data_proc$sexo)
 frq(data_proc$edad)
 frq(data_proc$confianza)
 frq(data_proc$iden_pol)
+
+#Graficos ----------------------------------------------------------------------
+
+plot_grpfrq(data_proc$iden_pol, data_proc$confianza,
+            title = "Distribucion de niveles de Confianza según Identificacion Politica")
+
+plot_xtab(data_proc$confianza, data_proc$iden_pol, 
+          title = "Grado de Confianza de cada Identificacion Politica")
+
+plot_xtab(data_proc$conf_dummy, data_proc$iden_pol, 
+          title = "Confianza/Desconfianza de cada Identificacion Politica")
+
+plot_xtab(data_proc$sexo, data_proc$confianza,
+            title = "Grado de Confianza según sexo")
+
+plot_xtab(data_proc$edad, data_proc$confianza,
+          title = "Grado de Confianza según Edad")
 
 #Guardar datos procesados ------------------------------------------------------
 
