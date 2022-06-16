@@ -6,6 +6,9 @@
 
 pacman::p_load(haven, tidyverse, sjmisc, sjPlot, ggrepel, kableExtra, modeest)
 
+#Fijación de directorio
+#setwd()
+
 #Carga de datos
 
 data = read_dta("input/data/base_85.dta")
