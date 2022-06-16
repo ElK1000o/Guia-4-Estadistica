@@ -15,11 +15,32 @@ toc: true
 ```{r paquetes, include=FALSE}
 pacman::p_load(haven, tidyverse, sjmisc, sjPlot, kableExtra, modeest)
 ```
+##Introduccion: 
+El bajo nivel de desconfianza en los partidos politicos manifiesta la posible
+existencia de anomia en la sociedad, dado que segundo Durkheim la falta de esta 
+imposibilita y evidencia la delicada colectividad entre los organos, por tanto la cohesion social puede liquidarse produciendo un fenomeno anomico. 
+
+Hipotesis: Hipotesis univariada El alto nivel de desconfianza indica el caracter anomico presente en la sociedad estudiada. 
+
+Hipotesis bivariada: El porcentaje de desconfiazna en las identidad politicas depende necesariamnete del sector politico al que la gente se sienta identificado. 
+
+En este trabjo utilizaremos los datos de la encuesta cep 85 
+(estudio nacional de opinion publica, tercera serie N°55, agosto 2021) 
+la cual hace un analisis que busca medir principalmente los siguientes temas; Percepciones politicas y economicas, democracia y confianza, vision del pais y principales problemas, 
+democracia y confianza y identificacion politica y nivel de politizacion. 
+Las datos que estudiaremos en nuestro analisis recopila 3 de ejes de investigacion de la base de datos cep 85, Identidad politica (iden_pol_2), grado de confianza (confianza_6_j) y la variable Edad. c) Base de datos a utilizar y breve descripción de la misma
+#    - institución que la aplica: Centro de estudios publicos 
+#    - año de aplicación: 2021
+#    - tamaño de la muestra: 1443 personas  
+#    - unidad de observación: Son todos los chilenos y chilenas residentes en el
+pais de 18 y más años 
+
+
 
 ```{r datos, include=FALSE}
 data = read_dta("input/data/base_85.dta")
 ```
-
+##recodificacion: Las variables fueron recodificadas en funcion de los datos que se pretenden analizar con el fin de optimizar los resultados junto con la lectura de estos...................
 ```{r procesamiento datos, include=FALSE}
 data_proc = data%>% 
   mutate(iden_pol = case_when(iden_pol_2 >= 1 & iden_pol_2 <= 2 ~"Izquierda",
@@ -47,11 +68,25 @@ data_proc$iden_pol = factor(data_proc$iden_pol, levels = c(
 data_proc$confianza = factor(data_proc$confianza, levels = c(
   "Mucha Confianza", "Bastante Confianza", "Poca Confianza", "Nada de Confianza"))
 ```
+#Metodologia: 
 
+Codificacion de la variable
+iden_pol2: La variable fue recodificada en su nombre a "iden_pol" sus valores fueron codificados equitativamente de 2 en 2 en 5 categorias politicas diferentes izquerda, centro izquierda, centro , centro derecha y derecha   
+#valores entre los valores (1 y 2) se encuenstra codificada el valor "Izquierda" los datos (3 y 4) tomarian el valor de "centro izquierda" los datos (5 y 6) tomarian el valor de "centro", los datos de (7 y 8) represengarian el valor de centro derecha y los datos arrojados de (9 y 10) representarian el valor de "Derecha" 
+#El nivel de medicion en la variable iden_pol es nominal.
+#El atributo que bsca representar esta variable es la identidad politica de las
+personas 
+
+confianza_6_j: Esta variable fue codificada en nombre y en sus valores"no contesta, no sabe, no sabe" asignando el valor de NA puesto que dichos datos no son relevantes para nuestro analisis.El atributo que busca representar esta variable es la confianza de las personas en la identidad politica.
+Confianza dummy: La confianza dummy fue codificada como mucha confianza y bastante confianza en una mimsa unidad de respuesta la que seria "confianza" y poca confianza y nada de confianza se unificaron en la unidad de respuesta "desconfianza"
+Esta variable se cracteriza por tener solo dos respuestas polares, en este caso serian confianza y desconfianza.
+
+Edad (edad): Esta variable indica la edad numerica exacta 
+Edad por tramos (edad_tr): Esta variable fue codificada en 3 tramos etarios (18-29 jovenes, 30-59 adultos, 60 o más adultos mayores.)
 #Tablas y Graficos
 
 ```{r Univariado, echo=FALSE}
-plot_frq(data_proc$conf_dummy,
+plot_frq(data_proc$confianza,
          title = "Distribucion Niveles de Confianza", geom.colors = "purple")
 ```
 
@@ -107,3 +142,4 @@ sjt.xtab(data_proc$confianza, data_proc$iden_pol, title = "Tabla de Contingencia
          show.col.prc = T, show.row.prc = T)
 ```
 
+#Resultados: Con un 95,3% de porcentaje acumulado entre las variables nada de confianza y poca confianza, interpretamos un resultado positivo en funcion de nuestra hipotesis con respecto a los porcentaje de desconfianza se reconoce un severo problema dentro de la sociedad la que trae condigo una consecuencia anomica 
