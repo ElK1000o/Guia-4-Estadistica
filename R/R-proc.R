@@ -56,6 +56,7 @@ frq(data_proc$sexo)
 frq(data_proc$edad)
 frq(data_proc$confianza)
 frq(data_proc$iden_pol)
+frq(data_proc$conf_dummy)
 
 #MTC edad
 
@@ -70,21 +71,33 @@ sd(data_proc$edad, na.rm = T)
 
 plot_grpfrq(data_proc$iden_pol, data_proc$confianza,
             title = "Distribucion de niveles de Confianza según Identificacion Politica")
-
-plot_frq(data_proc$confianza,
-         title = "Distribucion Niveles de Confianza")
+# H. univariada
+plot_frq(data_proc$conf_dummy,
+         title = "Distribucion Niveles de Confianza", geom.colors = "purple")
+        
 
 plot_xtab(data_proc$confianza, data_proc$iden_pol, 
-          title = "Grado de Confianza de cada Identificacion Politica")
+          title = "Grado de Confianza de cada Identificacion Politica", 
+          show.n = F, coord.flip = T, geom.colors = "lightblue")
 
 plot_xtab(data_proc$conf_dummy, data_proc$iden_pol, 
-          title = "Confianza/Desconfianza de cada Identificacion Politica")
+          title = "Confianza/Desconfianza de cada Identificacion Politica", 
+          geom.colors = "pink", 
+          show.n = F, 
+          coord.flip = T)
 
-plot_xtab(data_proc$sexo, data_proc$confianza,
-            title = "Grado de Confianza según sexo")
+plot_xtab(data_proc$conf_dummy, data_proc$sexo,
+          title = "Grado de Confianza según sexo",
+          geom.colors = "purple",
+          show.n = F, 
+          coord.flip = T,
+          show.total = FALSE)
 
 plot_xtab(data_proc$edad_tr, data_proc$confianza,
-          title = "Grado de Confianza según Edad")
+          title = "Grado de Confianza según Edad",
+          show.n = F, 
+          coord.flip = T,
+          show.total = FALSE)
 
 #Guardar datos procesados ------------------------------------------------------
 
