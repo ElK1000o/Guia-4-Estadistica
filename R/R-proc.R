@@ -109,6 +109,18 @@ plot_grpfrq(data_proc$iden_pol, data_proc$confianza,
 sjt.xtab(data_proc$confianza, data_proc$iden_pol, title = "Tabla de Contingencia: Grado confianza según identificacion politica",
          show.col.prc = T, show.row.prc = T)
 
+data_proc %>% 
+  select(edad) %>%
+  descr(show = c("label", "n", "mean", "sd", "md", "range")) %>% 
+  kable(format = "latex",
+        caption = "MTC Satisfacion con la vida/Clima Social Escolar",
+        col.names = c("Variable", "Etiqueta", "n", "Media", "D. estandar", "Mediana", "Rango"),
+        position = "center") %>%
+  kable_classic(full_width = F,
+                html_font = "cambria") %>% 
+  footnote("Elaboración propia en base a CEP 85",
+           general_title = "Fuente: ")
+
 #Guardar datos procesados ------------------------------------------------------
 
 saveRDS(data_proc, file = "output/data/datos_proc.rds")
