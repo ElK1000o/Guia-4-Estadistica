@@ -5,12 +5,16 @@ date: '2022-06-16'
 output: html_document
 ---
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+![](https://www.uahurtado.cl/wp-images/uploads/2015/05/uah2.png) 
 
 Universidad Alberto Hurtado
 Carrera: Sociología
 Profesora: Maria Constanza Ayala Reyes
-Ayudante: Clemente Silva
-
+Ayudante: Clemente Silva Mardones
 
 ```{r paquetes, include=FALSE}
 pacman::p_load(haven, tidyverse, sjmisc, sjPlot, kableExtra, modeest)
@@ -36,14 +40,6 @@ El fenómeno de la anomia y la alineación en términos sociales, en nuestra inv
 
 2. Hipótesis bivariada: El porcentaje de desconfianza en la clase política depende necesariamente del sector político en el que los individuos sientan identificación. ("confianza e identificación política" --> confianza e iden_pol).
 
-*Bibliografía:*
-
-Laca Arocena, Francisco Augusto, Santana Aguilar, Heriberto, Ochoa Madrigal, Yunuen, & Mejía Ceballos, Juan Carlos. (2011). Percepciones de bienestar social, anomia, interés e impotencia política en relación con las actitudes hacia la democracia. Liberabit, 17(1), 7-18. Recuperado en 16 de junio de 2022, de http://www.scielo.org.pe/scielo.php?script=sci_arttext&pid=S1729-48272011000100002&lng=es&tlng=es.
-
-Alonso, Daniela, & Brussino, Silvina. (2020). El malestar social en la democracia: alienación política, clima socioemocional y legitimidad. Revista de psicología (Santiago), 29(2), 74-87. https://dx.doi.org/10.5354/0719-0581.2020.55436
-
-Repositorio Universidad Alberto Hurtado (2008): "Participación y Alineación Política en Chile". Disponible en Internet: https://repositorio.uahurtado.cl/static/pages/docs/2008/n575_8.pdf
-
 *Datos a utilizar: (BDD y descripción de ella)*
 
 Las datos que estudiaremos en nuestro analisis recopila 3 ejes de investigación de la base de datos cep 85:
@@ -68,7 +64,7 @@ data = read_dta("input/data/base_85.dta")
 
 Recodificacion: Las variables fueron recodificadas en función de los datos que se pretenden analizar con el fin de optimizar los resultados junto con la lectura de estos.
 
-```{r procesamiento datos, include=FALSE}
+```{r procesamiento datos}
 data_proc = data%>% 
   mutate(iden_pol = case_when(iden_pol_2 >= 1 & iden_pol_2 <= 2 ~"Izquierda",
                               iden_pol_2 >= 3 & iden_pol_2 <= 4 ~"Centro Izquierda",
@@ -159,7 +155,7 @@ plot_frq(data_proc$confianza,
 ```
 
 
-```{r Bivariado 1, echo=FALSE}
+```{r Bivariado 1, echo=FALSE, warning=FALSE}
 plot_grpfrq(data_proc$iden_pol, data_proc$confianza,
             title = "Distribucion de niveles de Confianza según Identificacion Politica",
             coord.flip = T, show.n = F)
@@ -249,3 +245,12 @@ De este modo, nuestro objetivo de establecer relación entre ambos conceptos soc
 
 En conclusión, en cuanto a los límites de nuestra investigación, es que nos basamos en una encuesta única. No hemos contrastado información. Además, no consideramos otros aspectos fundamentales y relevantes de la encuesta tales como por ejemplo: la percepción. En este sentido, creemos que en un estudio futuro podríamos hacer un análisis más completo y acabado de modo que nuestro trabajo sea del todo informativo. 
 
+*Bibliografía:*
+
+Laca Arocena, Francisco Augusto, Santana Aguilar, Heriberto, Ochoa Madrigal, Yunuen, & Mejía Ceballos, Juan Carlos. (2011). Percepciones de bienestar social, anomia, interés e impotencia política en relación con las actitudes hacia la democracia. Liberabit, 17(1), 7-18. Recuperado en 16 de junio de 2022, de http://www.scielo.org.pe/scielo.php?script=sci_arttext&pid=S1729-48272011000100002&lng=es&tlng=es.
+
+Alonso, Daniela, & Brussino, Silvina. (2020). El malestar social en la democracia: alienación política, clima socioemocional y legitimidad. Revista de psicología (Santiago), 29(2), 74-87. https://dx.doi.org/10.5354/0719-0581.2020.55436
+
+Repositorio Universidad Alberto Hurtado (2008): "Participación y Alineación Política en Chile". Disponible en Internet: https://repositorio.uahurtado.cl/static/pages/docs/2008/n575_8.pdf
+
+**El archivo .Rmd fue renderizado a html y convertido a word, debido a fallo que no permitía renderizar las tablas a pdf.**
