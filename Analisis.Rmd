@@ -46,12 +46,6 @@ Repositorio Universidad Alberto Hurtado (2008): "Participación y Alineación Po
 
 *Datos a utilizar: (BDD y descripción de ella)*
 
-En este trabjo utilizaremos los datos de la encuesta cep 85 
-(estudio nacional de opinión pública, tercera serie N°55, agosto 2021), 
-la cual hace un analisis que busca medir principalmente los siguientes temas;
-
-Percepciones políticas y económicas, democracia y confianza, visión del país y principales problemas, democracia y confianza e identificacion política y nivel de politización. 
-
 Las datos que estudiaremos en nuestro analisis recopila 3 ejes de investigación de la base de datos cep 85:
 
 a. Identidad politica (iden_pol_2)
@@ -71,7 +65,8 @@ país de 18 y más años.
 data = read_dta("input/data/base_85.dta")
 ```
 
-Recodificación: Las variables fueron recodificadas en función de los datos que se pretenden analizar con el fin de optimizar los resultados junto con la lectura de estos.
+
+Recodificacion: Las variables fueron recodificadas en función de los datos que se pretenden analizar con el fin de optimizar los resultados junto con la lectura de estos.
 
 ```{r procesamiento datos, include=FALSE}
 data_proc = data%>% 
@@ -94,9 +89,14 @@ data_proc = data%>%
                           TRUE~NA_character_),
          sexo = case_when(sexo==1 ~"Hombre", sexo==2 ~"Mujer"))%>%
   select(sexo, edad, edad_tr, iden_pol, confianza, conf_dummy)
+```
 
+```{ordenar variables 1, echo=FALSE}
 data_proc$iden_pol = factor(data_proc$iden_pol, levels = c(
   "Izquierda", "Centro Izquierda", "Centro", "Centro Derecha", "Derecha"))
+```
+
+```{r ordenar variables 2, echo=FALSE}
 data_proc$confianza = factor(data_proc$confianza, levels = c(
   "Mucha Confianza", "Bastante Confianza", "Poca Confianza", "Nada de Confianza"))
 ```
@@ -150,7 +150,6 @@ Edad es una variable que se representa en término numéricos exactos. Ésta, fu
 (ii) 30-59 años: adultos. 
 (iii) 60 años o más años: adultos mayores. 
 
-
 *Tablas y Graficos:*
 
 ```{r Univariado, echo=FALSE}
@@ -201,6 +200,7 @@ plot_xtab(data_proc$edad_tr, data_proc$confianza,
 ```
 
 
+
 ```{r Tabla de contingencia, echo=FALSE}
 sjt.xtab(data_proc$confianza, data_proc$iden_pol, title = "Tabla de Contingencia: Grado confianza según identificacion politica",
          show.col.prc = T, show.row.prc = T)
@@ -221,6 +221,8 @@ data_proc %>%
            general_title = "Fuente: ")
 
 ```
+
+
 ```{r Summary Edad}
 summary(data_proc$edad) #Cuartiles + Media + Mediana Edad
 ```
@@ -246,6 +248,4 @@ Como grupo y en base a los resultados obtenidos, podemos concluir que en el marc
 De este modo, nuestro objetivo de establecer relación entre ambos conceptos sociológicamente relevantes y la realidad de la sociedad chilena en el marco de la política, es posible y efectiva. Como expuse anteriormente, una sociedad que no confía ni se representa cae en el fenómeno dormido de la alineación política y este puede tener como resultado un ethos generalizado de anomia entre todos los rangos etareos analizados y codificados en esta investigación. Es decir, si analizamos el gráfico de grado de confianza según edad, la respuesta más repetida se concentra en "nada de confianza" independiente de si se es adulto, adulto mayor o joven, existiendo la misma tasa de respuesta entre adulto y adulto mayor. 
 
 En conclusión, en cuanto a los límites de nuestra investigación, es que nos basamos en una encuesta única. No hemos contrastado información. Además, no consideramos otros aspectos fundamentales y relevantes de la encuesta tales como por ejemplo: la percepción. En este sentido, creemos que en un estudio futuro podríamos hacer un análisis más completo y acabado de modo que nuestro trabajo sea del todo informativo. 
-
-
 
