@@ -77,7 +77,6 @@ plot_frq(data_proc$conf_dummy,
          title = "Distribucion Niveles de Confianza", geom.colors = "purple")
         
 # H. bivariada
-
 plot_xtab(data_proc$confianza, data_proc$iden_pol, 
           title = "Grado de Confianza de cada Identificacion Politica", 
           show.n = F, coord.flip = T)
@@ -87,7 +86,7 @@ plot_xtab(data_proc$conf_dummy, data_proc$iden_pol,
           geom.colors = "pink", 
           show.n = F, 
           coord.flip = T)
-
+#-------------------------------------------------------------------------------
 plot_xtab(data_proc$conf_dummy, data_proc$sexo,
           title = "Grado de Confianza según sexo",
           geom.colors = "purple",
@@ -102,12 +101,15 @@ plot_xtab(data_proc$edad_tr, data_proc$confianza,
           show.total = F)
 
 plot_grpfrq(data_proc$iden_pol, data_proc$confianza,
-            title = "Distribucion de niveles de Confianza según Identificacion Politica")
+            title = "Distribucion de niveles de Confianza según Identificacion Politica",
+            show.n = F, 
+            coord.flip = T)
 
 #Tablas
-
-sjt.xtab(data_proc$confianza, data_proc$iden_pol, title = "Tabla de Contingencia: Grado confianza según identificacion politica",
-         show.col.prc = T, show.row.prc = T)
+sjt.xtab(data_proc$confianza, data_proc$iden_pol, 
+         title = "Tabla de Contingencia: Grado confianza según identificacion politica",
+         show.col.prc = T, 
+         show.row.prc = T)
 
 data_proc %>% 
   select(edad) %>%

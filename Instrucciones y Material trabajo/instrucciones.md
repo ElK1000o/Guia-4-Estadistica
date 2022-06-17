@@ -54,7 +54,11 @@ b) Indicar la manera en la cual están medidas las variables:
     - atributos.
     - nivel de medición.
     
-c) Utilizar al menos una variable cuantitativa, una ordinal y una nominal, es decir, como mínimo       hay que utilizar 3 variables.  
+c) Utilizar al menos una variable cuantitativa, una ordinal y una nominal, es decir, como mínimo hay que utilizar 3 variables.  
+
+- 1 cuantitativa: edad  que es intervalar
+- 1 ordinal: grado de confianza
+- 1 nominal: iden_pol
  
 *Si se realiza alguna transformación de datos (como recodificar o calcular una nueva variable), se debe indicar acá*
 

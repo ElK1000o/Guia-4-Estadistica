@@ -1,5 +1,5 @@
 ---
-title: "Anomia"
+title: "Anomia y alineación en el marco de la política chilena"
 author: "Camilo Riquelme - Jaime Salinas - Isidora Toledo"
 date: '2022-06-16'
 output: html_document
@@ -17,14 +17,65 @@ pacman::p_load(haven, tidyverse, sjmisc, sjPlot, kableExtra, modeest)
 ```
 
 ##Introduccion: 
+<<<<<<< Updated upstream
 
 El bajo nivel de desconfianza en los partidos politicos manifiesta la posible existencia de anomia en la sociedad, dado que segundo Durkheim la falta de esta imposibilita y evidencia la delicada colectividad entre los organos, por tanto la cohesion social puede liquidarse produciendo un fenomeno anomico. 
+=======
+>>>>>>> Stashed changes
 
-Hipotesis: Hipotesis univariada El alto nivel de desconfianza indica el caracter anomico presente en la sociedad estudiada. 
+*Problema de investigación:* 
 
-Hipotesis bivariada: El porcentaje de desconfiazna en las identidad politicas depende necesariamnete del sector politico al que la gente se sienta identificado. 
+Hemos percibido que existe una muy baja confianza por parte de la población chilena en los actuales partidos políticos. Frente a esto, en el marco de la teoría sociológica, creemos relevante establecer correlación entre una sociedad que no tiene representación política y que por ende, no tiene confianza en la clase política lo cual, en términos causales lleva al individuo a ubicarse al margen del ejercicio político. Esto, puede ser explicado por un lado, con la teoría de Durkheim y su concepto de anomia y, por otro lado, en lo que planea Fernado Atria adecuando el concepto de Alienación de Karl Marx en lo que es la alineación política. 
 
+Creemos que una sociedad que no puede confiar en sus gobernantes, representa un fenómeno que no solo se puede explicar mediante la mera decisión del individuo a no creer, sino más bien, que tiene que ver por un lado con eso, pero por otro lado con el conjunto de situaciones externas a el que lo llevaron a dejar de creer y confiar; en efecto, a perder representación. 
+
+El fenómeno de la anomia y la alineación en términos sociales, en nuestra investigación encuentra sustento en la variable "confianza". Pues la falta de esta imposibilita la la adecuada cohesión social, lo que puede liquidar el correcto funcionamiento social, cayendo ésta en "estados de desorganización social y aislamiento del individuo como consecuencia de la falta o la incongruencia de las normas sociales" (Diccionario Oxford Language) en tanto dichas normas (valores e ideas abstractas materializadas en leyes) no representan a los sujetos que se rigen por ellas. 
+
+*Pregunta de investigación:*
+
+¿Es la sociedad chilena una sociedad anómica y elienada en el marco de la política? 
+
+*Hipótesis:*
+
+1. Hipótesis univariada: El alto nivel de desconfianza indica el carácter anómico presente en la sociedad estudiada. ("confianza" --> confianza_6_j)
+
+2. Hipótesis bivariada: El porcentaje de desconfianza en la clase política depende necesariamente del sector político en el que los individuos sientan identificación. ("confianza e identificación política" --> confianza e iden_pol).
+
+*Bibliografía:*
+
+Laca Arocena, Francisco Augusto, Santana Aguilar, Heriberto, Ochoa Madrigal, Yunuen, & Mejía Ceballos, Juan Carlos. (2011). Percepciones de bienestar social, anomia, interés e impotencia política en relación con las actitudes hacia la democracia. Liberabit, 17(1), 7-18. Recuperado en 16 de junio de 2022, de http://www.scielo.org.pe/scielo.php?script=sci_arttext&pid=S1729-48272011000100002&lng=es&tlng=es.
+
+Alonso, Daniela, & Brussino, Silvina. (2020). El malestar social en la democracia: alienación política, clima socioemocional y legitimidad. Revista de psicología (Santiago), 29(2), 74-87. https://dx.doi.org/10.5354/0719-0581.2020.55436
+
+Centro de seguridad urbana (2016): "diagnosticojsjsjsjsjjss 2016/1026". disponible en internet: copiar link
+
+Repositorio Universidad Alberto Hurtado (2008): "Participación y Alineación Política en Chile". Disponible en Internet: https://repositorio.uahurtado.cl/static/pages/docs/2008/n575_8.pdf
+
+*Datos a utilizar: (BDD y descripción de ella)*
+
+<<<<<<< Updated upstream
 En este trabjo utilizaremos los datos de la encuesta CEP 85 (estudio nacional de opinion publica N°55, tercera serie, agosto 2021), realizada por el Centro de Estudios Publicos (CEP), la cual hace un analisis que busca medir principalmente los siguientes temas; Percepciones politicas y economicas, democracia y confianza, vision del pais y principales problemas, democracia y confianza y identificacion politica y nivel de politizacion.
+=======
+En este trabjo utilizaremos los datos de la encuesta cep 85 
+(estudio nacional de opinión pública, tercera serie N°55, agosto 2021), 
+la cual hace un analisis que busca medir principalmente los siguientes temas;
+
+Percepciones políticas y económicas, democracia y confianza, visión del país y principales problemas, democracia y confianza e identificacion política y nivel de politización. 
+
+Las datos que estudiaremos en nuestro analisis recopila 3 ejes de investigación de la base de datos cep 85:
+
+a. Identidad politica (iden_pol_2)
+b. grado de confianza (confianza_6_j)
+c. variable Edad (edad)
+
+Descripción: 
+
+- institución que la aplica: Centro de estudios públicos 
+- año de aplicación: 2021
+- tamaño de la muestra: 1443 personas  
+- unidad de observación: Son todos los chilenos y chilenas residentes en el
+país de 18 y más años. 
+>>>>>>> Stashed changes
 
 Las datos que estudiaremos en nuestro analisis recopila 3 de ejes de investigacion de la base de datos cep 85, Identidad politica (iden_pol_2), grado de confianza (confianza_6_j) y la variable Edad. c) Base de datos a utilizar y breve descripción de la misma
 - institución que la aplica: Centro de estudios publicos 
@@ -36,7 +87,11 @@ Las datos que estudiaremos en nuestro analisis recopila 3 de ejes de investigaci
 data = read_dta("input/data/base_85.dta")
 ```
 
+<<<<<<< Updated upstream
 ##recodificacion: Las variables fueron recodificadas en funcion de los datos que se pretenden analizar con el fin de optimizar los resultados junto con la lectura de estos...................
+=======
+Recodificacion: Las variables fueron recodificadas en función de los datos que se pretenden analizar con el fin de optimizar los resultados junto con la lectura de estos.
+>>>>>>> Stashed changes
 
 ```{r procesamiento datos, include=FALSE}
 data_proc = data%>% 
@@ -65,6 +120,7 @@ data_proc$iden_pol = factor(data_proc$iden_pol, levels = c(
 data_proc$confianza = factor(data_proc$confianza, levels = c(
   "Mucha Confianza", "Bastante Confianza", "Poca Confianza", "Nada de Confianza"))
 ```
+<<<<<<< Updated upstream
 
 #Metodologia: 
 
@@ -83,6 +139,60 @@ Edad (edad): Esta variable indica la edad numerica exacta
 Edad por tramos (edad_tr): Esta variable fue codificada en 3 tramos etarios (18-29 jovenes, 30-59 adultos, 60 o más adultos mayores.)
 
 #Tablas y Graficos
+=======
+
+*Metodologia:* 
+
+1)
+
+a. Codificación de la variable iden_pol.
+
+Dicha variable fue recodificada. Sus valores fueron codificados equitativamente de dos en dos y a su vez, en cinco categorías políticas diferentes: (i) izquierda, (ii) centro izquierda, (iii) centro, (iv) centro derecha y (v) derecha
+
+
+b. Valores nuevos: 
+
+(i) valores 1 y 2: Izquierda.
+(ii) valores 3 y 4: Centro Izquierda.
+(iii) valores 5 y 6: Centro.
+(iv) valores 7 y 8: Centro Derecha. 
+(v) valores 9 y 10: Derecha. 
+
+c. Nivel de medición de la variable iden_pol: nominal. 
+
+d. El atributo que busca representar esta variable es la identidad política de las personas. 
+
+2)
+
+a. Codificación de la variable confianza_6_j.
+
+Esta variable fue recodificada tanto en su nombre original como en sus valores. 
+
+b. Valores nuevo: 
+
+Tanto "no contesta y no sabe" fueron asignados como NA, puesto que dichos datos no son relevantes para nuestro análisis. 
+
+c. El atributo que busca representar esta variable es la confianza de las personas en el marco de la identificación política. 
+
+d. Nuevo nombre: conf_dummy
+
+La variable "confianza Dummy" agrupó, por un lado: mucha confianza y bastante confianza en una misma unidad de respuesta --> confianza. Del mismo modo, agrupó: poca confianza y nada de confianza en una misma unidad de respuesta --> desconfianza.
+
+e. Esta variable se caracteriza por tener sólo dos respuestas polarizadas. En este caso: confianza y desconfiza. 
+
+3)
+
+a. Codificación de la variable edad:
+
+Edad es una variable que se representa en término numéricos exactos. Ésta, fue recodificada por tramos: (edad_tr), con el propósito de obtener 3 tramos etários: 
+ 
+(i) 18-29 años: jóvenes. 
+(ii) 30-59 años: adultos. 
+(iii) 60 años o más años: adultos mayores. 
+
+
+*Tablas y Graficos:*
+>>>>>>> Stashed changes
 
 ```{r Univariado, echo=FALSE}
 plot_frq(data_proc$confianza,
@@ -140,6 +250,7 @@ sjt.xtab(data_proc$confianza, data_proc$iden_pol, title = "Tabla de Contingencia
          show.col.prc = T, show.row.prc = T)
 ```
 
+<<<<<<< Updated upstream
 ```{r MTC y DE edad, echo=FALSE}
 data_proc %>% 
   select(edad) %>%
@@ -164,3 +275,9 @@ mlv(data_proc$edad, method = "mfv", na.rm = T) #Moda Edad
 
 
 #Resultados: Con un 95,3% de porcentaje acumulado entre las variables nada de confianza y poca confianza, interpretamos un resultado positivo en funcion de nuestra hipotesis con respecto a los porcentaje de desconfianza se reconoce un severo problema dentro de la sociedad la que trae condigo una consecuencia anomica 
+=======
+
+
+
+Resultados: Con un 95,3% de porcentaje acumulado entre las variables nada de confianza y poca confianza, interpretamos un resultado positivo en funcion de nuestra hipotesis con respecto a los porcentaje de desconfianza se reconoce un severo problema dentro de la sociedad la que trae condigo una consecuencia anomica 
+>>>>>>> Stashed changes
