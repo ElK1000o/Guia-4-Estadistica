@@ -6,22 +6,17 @@ output: html_document
 ---
 
 
-#### Universidad Alberto Hurtado
-#### Carrera: Sociología
-#### Profesora: Maria Constanza Ayala Reyes
-#### Ayudante: Clemente Silva
+Universidad Alberto Hurtado
+Carrera: Sociología
+Profesora: Maria Constanza Ayala Reyes
+Ayudante: Clemente Silva
 
 
 ```{r paquetes, include=FALSE}
 pacman::p_load(haven, tidyverse, sjmisc, sjPlot, kableExtra, modeest)
 ```
 
-##Introduccion: 
-<<<<<<< Updated upstream
-
-El bajo nivel de desconfianza en los partidos politicos manifiesta la posible existencia de anomia en la sociedad, dado que segundo Durkheim la falta de esta imposibilita y evidencia la delicada colectividad entre los organos, por tanto la cohesion social puede liquidarse produciendo un fenomeno anomico. 
-=======
->>>>>>> Stashed changes
+*Introduccion:*
 
 *Problema de investigación:* 
 
@@ -33,7 +28,7 @@ El fenómeno de la anomia y la alineación en términos sociales, en nuestra inv
 
 *Pregunta de investigación:*
 
-¿Es la sociedad chilena una sociedad anómica y elienada en el marco de la política? 
+¿En qué medida se puede establecer relación entre concepto de anomia y alienación con los niveles de confianza e identificación política arrojados por la encuesta CEP?
 
 *Hipótesis:*
 
@@ -47,15 +42,10 @@ Laca Arocena, Francisco Augusto, Santana Aguilar, Heriberto, Ochoa Madrigal, Yun
 
 Alonso, Daniela, & Brussino, Silvina. (2020). El malestar social en la democracia: alienación política, clima socioemocional y legitimidad. Revista de psicología (Santiago), 29(2), 74-87. https://dx.doi.org/10.5354/0719-0581.2020.55436
 
-Centro de seguridad urbana (2016): "diagnosticojsjsjsjsjjss 2016/1026". disponible en internet: copiar link
-
 Repositorio Universidad Alberto Hurtado (2008): "Participación y Alineación Política en Chile". Disponible en Internet: https://repositorio.uahurtado.cl/static/pages/docs/2008/n575_8.pdf
 
 *Datos a utilizar: (BDD y descripción de ella)*
 
-<<<<<<< Updated upstream
-En este trabjo utilizaremos los datos de la encuesta CEP 85 (estudio nacional de opinion publica N°55, tercera serie, agosto 2021), realizada por el Centro de Estudios Publicos (CEP), la cual hace un analisis que busca medir principalmente los siguientes temas; Percepciones politicas y economicas, democracia y confianza, vision del pais y principales problemas, democracia y confianza y identificacion politica y nivel de politizacion.
-=======
 En este trabjo utilizaremos los datos de la encuesta cep 85 
 (estudio nacional de opinión pública, tercera serie N°55, agosto 2021), 
 la cual hace un analisis que busca medir principalmente los siguientes temas;
@@ -75,23 +65,13 @@ Descripción:
 - tamaño de la muestra: 1443 personas  
 - unidad de observación: Son todos los chilenos y chilenas residentes en el
 país de 18 y más años. 
->>>>>>> Stashed changes
 
-Las datos que estudiaremos en nuestro analisis recopila 3 de ejes de investigacion de la base de datos cep 85, Identidad politica (iden_pol_2), grado de confianza (confianza_6_j) y la variable Edad. c) Base de datos a utilizar y breve descripción de la misma
-- institución que la aplica: Centro de estudios publicos 
-- año de aplicación: 2021
-- tamaño de la muestra: 1443 personas  
-- unidad de observación: Son todos los chilenos y chilenas residentes en el pais de 18 y más años
 
 ```{r datos, include=FALSE}
 data = read_dta("input/data/base_85.dta")
 ```
 
-<<<<<<< Updated upstream
-##recodificacion: Las variables fueron recodificadas en funcion de los datos que se pretenden analizar con el fin de optimizar los resultados junto con la lectura de estos...................
-=======
-Recodificacion: Las variables fueron recodificadas en función de los datos que se pretenden analizar con el fin de optimizar los resultados junto con la lectura de estos.
->>>>>>> Stashed changes
+Recodificación: Las variables fueron recodificadas en función de los datos que se pretenden analizar con el fin de optimizar los resultados junto con la lectura de estos.
 
 ```{r procesamiento datos, include=FALSE}
 data_proc = data%>% 
@@ -120,26 +100,6 @@ data_proc$iden_pol = factor(data_proc$iden_pol, levels = c(
 data_proc$confianza = factor(data_proc$confianza, levels = c(
   "Mucha Confianza", "Bastante Confianza", "Poca Confianza", "Nada de Confianza"))
 ```
-<<<<<<< Updated upstream
-
-#Metodologia: 
-
-Codificacion de la variable
-iden_pol2: La variable fue recodificada en su nombre a "iden_pol" sus valores fueron codificados equitativamente de 2 en 2 en 5 categorias politicas diferentes izquerda, centro izquierda, centro , centro derecha y derecha. 
-Valores: entre los valores (1 y 2) se encuentra codificada el valor "Izquierda" los datos (3 y 4) tomarian el valor de "centro izquierda" los datos (5 y 6) tomarian el valor de "centro", los datos de (7 y 8) representarian el valor de centro derecha y los datos arrojados de (9 y 10) representarian el valor de "Derecha".
-El nivel de medicion en la variable iden_pol es nominal.
-El atributo que bsca representar esta variable es la identidad politica de las
-personas 
-
-confianza_6_j: Esta variable fue codificada en nombre y en sus valores"no contesta, no sabe, no sabe" asignando el valor de NA puesto que dichos datos no son relevantes para nuestro analisis.El atributo que busca representar esta variable es la confianza de las personas en la identidad politica.
-Confianza dummy: La confianza dummy fue codificada como mucha confianza y bastante confianza en una misma unidad de respuesta la que seria "confianza" y poca confianza y nada de confianza se unificaron en la unidad de respuesta "desconfianza"
-Esta variable se caracteriza por tener solo dos respuestas polares, en este caso serian confianza y desconfianza.
-
-Edad (edad): Esta variable indica la edad numerica exacta 
-Edad por tramos (edad_tr): Esta variable fue codificada en 3 tramos etarios (18-29 jovenes, 30-59 adultos, 60 o más adultos mayores.)
-
-#Tablas y Graficos
-=======
 
 *Metodologia:* 
 
@@ -192,13 +152,12 @@ Edad es una variable que se representa en término numéricos exactos. Ésta, fu
 
 
 *Tablas y Graficos:*
->>>>>>> Stashed changes
 
 ```{r Univariado, echo=FALSE}
 plot_frq(data_proc$confianza,
-         title = "Distribucion Niveles de Confianza", geom.colors = "purple")
+         title = "Distribucion Niveles de Confianza", 
+         geom.colors = "purple")
 ```
-
 
 
 ```{r Bivariado 1, echo=FALSE}
@@ -208,13 +167,12 @@ plot_grpfrq(data_proc$iden_pol, data_proc$confianza,
 ```
 
 
-
 ```{r Bivariado 2, echo=FALSE}
 plot_xtab(data_proc$confianza, data_proc$iden_pol, 
           title = "Grado de Confianza de cada Identificacion Politica", 
-          show.n = F, coord.flip = T)
+          show.n = F, 
+          coord.flip = T)
 ```
-
 
 
 ```{r Bivariado 3, echo=FALSE}
@@ -225,7 +183,6 @@ plot_xtab(data_proc$conf_dummy, data_proc$iden_pol,
 ```
 
 
-
 ```{r Bivariado 4, echo=FALSE}
 plot_xtab(data_proc$conf_dummy, data_proc$sexo,
           title = "Grado de Confianza según sexo",
@@ -233,7 +190,6 @@ plot_xtab(data_proc$conf_dummy, data_proc$sexo,
           coord.flip = T,
           show.total = F)
 ```
-
 
 
 ```{r Bivariado 5, echo=FALSE}
@@ -250,7 +206,7 @@ sjt.xtab(data_proc$confianza, data_proc$iden_pol, title = "Tabla de Contingencia
          show.col.prc = T, show.row.prc = T)
 ```
 
-<<<<<<< Updated upstream
+
 ```{r MTC y DE edad, echo=FALSE}
 data_proc %>% 
   select(edad) %>%
@@ -273,11 +229,23 @@ summary(data_proc$edad) #Cuartiles + Media + Mediana Edad
 mlv(data_proc$edad, method = "mfv", na.rm = T) #Moda Edad
 ```
 
+*Resultados:*
 
-#Resultados: Con un 95,3% de porcentaje acumulado entre las variables nada de confianza y poca confianza, interpretamos un resultado positivo en funcion de nuestra hipotesis con respecto a los porcentaje de desconfianza se reconoce un severo problema dentro de la sociedad la que trae condigo una consecuencia anomica 
-=======
+Los resultados obtenidos de este análisis arrojan que en el marco de la variable confianza --> recod. conf_dummy, los niveles de diferencia entre "confianza" y "desconfianza" por parte de la población chilena, son extremadamente distintos. Es decir, por un lado tenemos que a confianza corresponde un total del 4.7% de la muestra (66 casos), mientras que en desconfianza, la tasa de respuesta es de un 95.3% (1333 casos/observaciones). 
+
+Con estos resultados analizados tenemos que para efectos de nuestras hipótesis, los resultados son positivos, pues se ajustan a lo que plantemos: que la sociedad chilena goza de altos nivele de desconfianza en la clase política y que sus niveles de representatividad con ella por tanto son casi nulos.
+
+En este sentido, y en contexto con los datos obtenidos, vemos que es posible tanto establecer relación entre la data y la hipótesis como inferir que a partir de esta, se puede interpretar que efctivamente existe un problema severo en lo que respecta a la desconfiaza por parte de la sociedad chilena en el marco de la política. Vemos que los ciudadanos chilenos (edad_tr) en niveles muy bajos reconocen algún tipo de representatividad con algunos de los partidos mencionados, pero que sin embargo, esto no establece causalidad para poder afirmar que los chilenos confían en dicho partidos políticos. 
+
+En este contexto, la data obtenida nos permite responder a nuestra pregunta de investigación en tanto como se mencionó, una sociedad alienada políticamente es una sociedad que está compuesta de sujetos que se enfrentan a una crisis de participación. Es decir, en palabras de Fernando Atria: que alguien esté políticamente alienado quiere decir que no puede ver el proceso político democrático como la forma de una voluntad que sea suya en tanto es de todos, es decir, no puede entenderlo como una expresión de una voluntad "nuestra". Para el alienado, en términos de Marx, la participación carece de sentido. 
+
+*Conlcusión:*
+
+Como grupo y en base a los resultados obtenidos, podemos concluir que en el marco de nuestra pregunta de investigación, éstos sí responden a ella. Es decir, sí es posible establecer relación entre el concepto de anomia y alienación con los niveles de confianza e identificación política arrojados por la encuesta CEP. Esto, dado que los niveles de confianza sólo corresponden a un total de 66 personas de un total de 1443 de la muestra. 
+
+De este modo, nuestro objetivo de establecer relación entre ambos conceptos sociológicamente relevantes y la realidad de la sociedad chilena en el marco de la política, es posible y efectiva. Como expuse anteriormente, una sociedad que no confía ni se representa cae en el fenómeno dormido de la alineación política y este puede tener como resultado un ethos generalizado de anomia entre todos los rangos etareos analizados y codificados en esta investigación. Es decir, si analizamos el gráfico de grado de confianza según edad, la respuesta más repetida se concentra en "nada de confianza" independiente de si se es adulto, adulto mayor o joven, existiendo la misma tasa de respuesta entre adulto y adulto mayor. 
+
+En conclusión, en cuanto a los límites de nuestra investigación, es que nos basamos en una encuesta única. No hemos contrastado información. Además, no consideramos otros aspectos fundamentales y relevantes de la encuesta tales como por ejemplo: la percepción. En este sentido, creemos que en un estudio futuro podríamos hacer un análisis más completo y acabado de modo que nuestro trabajo sea del todo informativo. 
 
 
 
-Resultados: Con un 95,3% de porcentaje acumulado entre las variables nada de confianza y poca confianza, interpretamos un resultado positivo en funcion de nuestra hipotesis con respecto a los porcentaje de desconfianza se reconoce un severo problema dentro de la sociedad la que trae condigo una consecuencia anomica 
->>>>>>> Stashed changes

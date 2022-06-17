@@ -94,7 +94,7 @@ plot_xtab(data_proc$conf_dummy, data_proc$sexo,
           coord.flip = T,
           show.total = F)
 
-plot_xtab(data_proc$edad_tr, data_proc$confianza,
+plot_xtab(data_proc$confianza, data_proc$edad_tr,
           title = "Grado de Confianza según Edad",
           show.n = F, 
           coord.flip = T,
